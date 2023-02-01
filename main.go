@@ -3,6 +3,8 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"github.com/eiannone/keyboard"
+	"log"
 	"os"
 	"strconv"
 	"strings"
@@ -14,6 +16,7 @@ type User struct {
 	Name           string
 	Age            int
 	FavoriteNumber float64
+	OwnsADog       bool
 }
 
 func main() {
@@ -24,11 +27,13 @@ func main() {
 	user.Name = readString("What is your name?")
 	user.Age = readInt("How old are you?")
 	user.FavoriteNumber = readFloat("What is your favorite number?")
+	user.OwnsADog = readBool("Do you own a dog (y/n)?")
 
-	fmt.Printf("Your name is %s, You are %d years old. Your favorite number is %.2f.",
+	fmt.Printf("Your name is %s, You are %d years old. Your favorite number is %.2f., and your own a %t.",
 		user.Name,
 		user.Age,
-		user.FavoriteNumber)
+		user.FavoriteNumber,
+		user.OwnsADog)
 
 }
 
@@ -83,6 +88,32 @@ func readFloat(s string) float64 {
 			fmt.Println("Please enter a number")
 		} else {
 			return num
+		}
+	}
+}
+
+func readBool(s string) bool {
+	err := keyboard.Open()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer func() {
+		_ = keyboard.Close()
+	}()
+
+	for {
+		fmt.Println(s)
+		char, _, err := keyboard.GetSingleKey()
+		if err != nil {
+			log.Fatal(err)
+		}
+		if strings.ToLower(string(char)) != "y" && strings.ToLower(string(char)) != "n" {
+			fmt.Println("Please type y or n")
+		} else if char == 'n' || char == 'N' {
+			return false
+		} else if char == 'y' || char == 'Y' {
+			return true
 		}
 	}
 }
