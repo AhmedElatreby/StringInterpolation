@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="5e3d7f1c-d77f-4948-8b10-12c6562e64cd" name="Changes" comment="ic">
       <changelist_data name="ahmedsport" email="ahmedsport@hotmail.com" date="1675288265000" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
